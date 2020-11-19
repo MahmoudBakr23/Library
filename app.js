@@ -19,19 +19,20 @@ addBookToLibrary(book2)
 console.log(library)
 
 const booksContainer = document.getElementById('books-container')
-
 library.forEach(function(book) {
+  const bookTile = document.createElement('div')
   let bookTitle = document.createElement('h4')
   bookTitle.innerText = book.title
-  booksContainer.appendChild(bookTitle)
+  bookTile.appendChild(bookTitle)
 
   let bookAuthor = document.createElement('h5')
   bookAuthor.innerText = `Author: ${book.author}`
-  booksContainer.appendChild(bookAuthor)
+  bookTile.appendChild(bookAuthor)
 
   let bookPages = document.createElement('span')
   bookPages.innerText = `Number of Pages ${book.pages}`
-  booksContainer.appendChild(bookPages)
+  bookTile.appendChild(bookPages)
+  booksContainer.appendChild(bookTile)
 })
 
 
