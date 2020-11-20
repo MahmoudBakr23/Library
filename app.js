@@ -19,7 +19,7 @@ function displayBooks() {
 		<td style="color: #fff; background-color: #333;">Title</td>
 		<td style="color: #fff; background-color: #333;">Author</td>
 		<td style="color: #fff; background-color: #333;">No.Pages</td>
-		<td style="color: #fff; background-color: #333;">Status</td>
+		<td style="color: #fff; background-color: #333;">Read?</td>
 		<td style="color: #fff; background-color: #333;">Delete</td>
 	`;
 	if (booksList !== null) {
@@ -30,7 +30,7 @@ function displayBooks() {
 				<td>${book.title}</td>
 				<td>${book.author}</td>
 				<td>${book.pages}</td>
-				<td><button class="${book.status ? 'unread' : 'read'}" data-status=${index}>${book.status ? 'Unread' : 'Read'}</button</td>
+				<td><button data-status=${index}>${book.status}</button</td>
 				<td><button class="delete" data-id=${index}>X</button></td>
 			`;
 			booksContainer.appendChild(bookRow);
@@ -47,14 +47,13 @@ function deleteBook(index) {
 	library.splice(index, 1);
 	displayBooks();
 }
-const showFormButton = document.getElementById('show-form')
-const addBookForm = document.getElementById('add-book')
+const showFormButton = document.getElementById('show-form');
+const addBookForm = document.getElementById('add-book');
 function eventListeners() {
-
 	showFormButton.addEventListener('click', () => {
-		addBookForm.classList.remove('hidden')
-		showFormButton.classList.add('hidden')
-	})
+		addBookForm.classList.remove('hidden');
+		showFormButton.classList.add('hidden');
+	});
 
 	addBookForm.addEventListener('submit', (book) => {
 		book.preventDefault();
