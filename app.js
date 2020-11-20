@@ -1,8 +1,8 @@
-function Book(title, author, pages) {
+function Book(title, author, pages, status) {
 	this.title = title;
 	this.author = author;
 	this.pages = pages;
-	this.status = 'read';
+	this.status = status;
 }
 
 const library = [];
@@ -62,8 +62,9 @@ function eventListeners() {
 		const title = document.getElementById('title').value;
 		const author = document.getElementById('author').value;
 		const pages = document.getElementById('pages').value;
+		const status = document.querySelector('input[name=readBook]:checked').value;
 
-		const newBook = new Book(title, author, pages);
+		const newBook = new Book(title, author, pages, status);
 		addBookToLibrary(newBook);
 		displayBooks();
 		document.getElementById('add-book').reset();
