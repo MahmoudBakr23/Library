@@ -1,38 +1,39 @@
-const library = [];
-
 function Book (title, author, pages) {
   this.title = title;
   this.author = author;
-  this.pages = pages;
+	this.pages = pages;
+	this.status = false;
+}
+
+function addBookToLibrary(book) {
+	const library = [];
+	library.push(book);
+	library.forEach(function(book) {
+		const booksContainer = document.getElementById('list')
+		const bookRow = document.createElement('tr')
+		bookRow.innerHTML = `
+			<td>${book.title}</td>
+			<td>${book.author}</td>
+			<td>${book.pages}</td>
+			<td>${book.status}</td>
+		`
+		booksContainer.appendChild(bookRow)
+	})
 }
 
 let book1 = new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 800)
 let book2 = new Book("Twilight", "I Don't Remember", 500)
-
-function addBookToLibrary(book) {
-  library.push(book);
-}
-
 addBookToLibrary(book1)
 addBookToLibrary(book2)
 
-console.log(library)
+document.getElementById('add-book').addEventListener('submit', (book) => {
+	book.preventDefault()
 
-const booksContainer = document.getElementById('books-container')
-library.forEach(function(book) {
-  const bookTile = document.createElement('div')
-  let bookTitle = document.createElement('h4')
-  bookTitle.innerText = book.title
-  bookTile.appendChild(bookTitle)
+	const title = document.getElementById('title').value
+	const author = document.getElementById('author').value
+	const pages = document.getElementById('pages').value
 
-  let bookAuthor = document.createElement('h5')
-  bookAuthor.innerText = `Author: ${book.author}`
-  bookTile.appendChild(bookAuthor)
-
-  let bookPages = document.createElement('span')
-  bookPages.innerText = `Number of Pages ${book.pages}`
-  bookTile.appendChild(bookPages)
-  booksContainer.appendChild(bookTile)
+	const newBook = new Book(title, author, pages)
+	addBookToLibrary(newBook)
+	console.log(library)
 })
-
-
