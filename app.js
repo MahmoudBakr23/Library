@@ -14,11 +14,19 @@ function addBookToLibrary(book) {
 function displayBooks() {
 	const booksList = library;
 	const booksContainer = document.getElementById('list');
-	booksContainer.innerHTML = '';
+	booksContainer.innerHTML = `
+		<td style="color: #fff; background-color: #333;">Book ID</td>
+		<td style="color: #fff; background-color: #333;">Title</td>
+		<td style="color: #fff; background-color: #333;">Author</td>
+		<td style="color: #fff; background-color: #333;">No.Pages</td>
+		<td style="color: #fff; background-color: #333;">Status</td>
+		<td style="color: #fff; background-color: #333;">Delete</td>
+	`;
 	if (booksList !== null) {
 		booksList.forEach((book, index) => {
 			const bookRow = document.createElement('tr');
 			bookRow.innerHTML = `
+				<td>#${index}</td>
 				<td>${book.title}</td>
 				<td>${book.author}</td>
 				<td>${book.pages}</td>
