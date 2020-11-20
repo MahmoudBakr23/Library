@@ -36,9 +36,9 @@ main {
   margin-bottom: 1rem;
   background-color: green;
   color: white;
+  cursor: pointer;
   border: 0;
   outline: none;
-  cursor: pointer;
 }
 
 #books-container {
@@ -53,25 +53,29 @@ td {
 
 button {
   cursor: pointer;
+  border: 0;
+  outline: none;
+  padding: 0.5rem;
 }
 
 .delete {
   background-color: red;
-  border: 0;
-  outline: none;
   font-size: 0.8rem;
   color: white;
   padding: 0.5rem;
 }
 
 .status {
-  border: 0;
-  outline: none;
   font-size: 0.8rem;
   padding: 0.5rem;
 }
 
 .read {
   background-color: blue;
+  color: white;
+}
+
+.unread {
+  background-color: #555;
   color: white;
 }
