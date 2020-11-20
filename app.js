@@ -2,7 +2,7 @@ function Book (title, author, pages) {
   this.title = title;
   this.author = author;
 	this.pages = pages;
-	this.status = false;
+	this.status = "not read";
 }
 
 function addBookToLibrary(book) {
@@ -15,10 +15,24 @@ function addBookToLibrary(book) {
 			<td>${book.title}</td>
 			<td>${book.author}</td>
 			<td>${book.pages}</td>
-			<td>${book.status}</td>
+			<td><button class="status">${book.status}</button</td>
+			<td><button class="delete">X</button></td>
 		`
 		booksContainer.appendChild(bookRow)
 	})
+}
+
+function bookStatus(book) {
+	if(book.classList.contains('status')) {
+		book.innerHTML = "read!"
+		book.classList.add('read')
+	}
+}
+
+function deleteBook(book) {
+	if(book.classList.contains('delete')) {
+		book.parentElement.parentElement.remove()
+	}
 }
 
 let book1 = new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 800)
@@ -36,4 +50,12 @@ document.getElementById('add-book').addEventListener('submit', (book) => {
 	const newBook = new Book(title, author, pages)
 	addBookToLibrary(newBook)
 	console.log(library)
+})
+
+document.getElementById('list').addEventListener('click', (book) => {
+	deleteBook(book.target)
+})
+
+document.getElementById('list').addEventListener('click', (book) => {
+	bookStatus(book.target)
 })
