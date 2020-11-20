@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Your Library</h1>
+        <button id="show-form">Add New Book</button>
+        <form id="add-book" class="hidden">
+            <div class="form-data">
+                <label for="title">Title</label>
+                <input type="text" id="title" required>
+            </div>
+            <div class="form-data">
+                <label for="author">Author</label>
+                <input type="text" id="author" required>
+            </div>
+            <div class="form-data">
+                <label for="pages">No.Pages</label>
+                <input type="number" id="pages" required>
+            </div>
+            <div class="form-data">
+                <div>
+                    <label for="readTrue">Read</label>
+                    <input name="readBook" value="true" id="readTrue" type="radio" required>
+                </div>
+                <div>
+                    <label for="readFalse">Not Read</label>
+                    <input name="readBook" value="false" id="readFalse" type="radio" required>
+                </div>
+            </div>
+            <input type="submit" value="Add a Book" id="button">
+        </form>
+        <table id="books-container">
+            <tbody id="list">
+                <tr>
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>No.Pages</td>
+                    <td>Status</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
