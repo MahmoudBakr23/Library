@@ -79,3 +79,15 @@ button {
   background-color: #555;
   color: white;
 }
+
+.hidden {
+  display: none;
+}
+
+#show-form {
+  background-color: green;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+}

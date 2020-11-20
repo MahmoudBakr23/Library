@@ -47,9 +47,16 @@ function deleteBook(index) {
 	library.splice(index, 1);
 	displayBooks();
 }
-
+const showFormButton = document.getElementById('show-form')
+const addBookForm = document.getElementById('add-book')
 function eventListeners() {
-	document.getElementById('add-book').addEventListener('submit', (book) => {
+
+	showFormButton.addEventListener('click', () => {
+		addBookForm.classList.remove('hidden')
+		showFormButton.classList.add('hidden')
+	})
+
+	addBookForm.addEventListener('submit', (book) => {
 		book.preventDefault();
 
 		const title = document.getElementById('title').value;
