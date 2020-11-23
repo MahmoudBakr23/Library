@@ -41,7 +41,7 @@ main {
   outline: none;
 }
 
-#books-container {
+#books-table {
   text-align: center;
   margin: 0 auto;
   background-color: #999;
@@ -84,7 +84,7 @@ button {
   display: none;
 }
 
-#show-form {
+#show-form-button {
   background-color: green;
   padding: 1rem 2rem;
   margin-bottom: 1rem;

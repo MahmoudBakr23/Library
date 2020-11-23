@@ -9,8 +9,9 @@
 <body>
     <main>
         <h1>Your Library</h1>
-        <button id="show-form">Add New Book</button>
-        <form id="add-book" class="hidden">
+        <button id="show-form-button">Add New Book</button>
+        <form id="add-book-form" class="hidden">
+
             <div class="form-data">
                 <label for="title">Title</label>
                 <input type="text" id="title" required>
@@ -35,15 +36,7 @@
             </div>
             <input type="submit" value="Add a Book" id="button">
         </form>
-        <table id="books-container">
-            <tbody id="list">
-                <tr>
-                    <td>Title</td>
-                    <td>Author</td>
-                    <td>No.Pages</td>
-                    <td>Status</td>
-                </tr>
-            </tbody>
+        <table id="books-table">
         </table>
     </main>
     <script src="app.js"></script>
