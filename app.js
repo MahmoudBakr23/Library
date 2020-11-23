@@ -13,27 +13,33 @@ function addBookToLibrary(book) {
 
 function displayBooks() {
 	const booksList = library;
-	const booksContainer = document.getElementById('list');
-	booksContainer.innerHTML = `
-		<td style="color: #fff; background-color: #333;">Book ID</td>
-		<td style="color: #fff; background-color: #333;">Title</td>
-		<td style="color: #fff; background-color: #333;">Author</td>
-		<td style="color: #fff; background-color: #333;">No.Pages</td>
-		<td style="color: #fff; background-color: #333;">Read?</td>
-		<td style="color: #fff; background-color: #333;">Delete</td>
-	`;
+	const booksTable = document.getElementById('books-table');
+	booksTable.innerHTML = `
+													<thead>
+														<td style="color: #fff; background-color: #333;">Book ID</td>
+														<td style="color: #fff; background-color: #333;">Title</td>
+														<td style="color: #fff; background-color: #333;">Author</td>
+														<td style="color: #fff; background-color: #333;">No.Pages</td>
+														<td style="color: #fff; background-color: #333;">Read?</td>
+														<td style="color: #fff; background-color: #333;">Delete</td>
+													</thead>
+													<tbody id="books-table-rows">
+													</tbody>
+													`;
+
+	const booksTableRows = document.getElementById('books-table-rows');
 	if (booksList !== null) {
 		booksList.forEach((book, index) => {
 			const bookRow = document.createElement('tr');
 			bookRow.innerHTML = `
-				<td>#${index}</td>
+				<td>${index + 1}.</td>
 				<td>${book.title}</td>
 				<td>${book.author}</td>
 				<td>${book.pages}</td>
-				<td><button data-status=${index}>${book.status}</button</td>
-				<td><button class="delete" data-id=${index}>X</button></td>
+				<td><button data-book-status=${index}>${book.status}</button</td>
+				<td><button class="delete" data-book-id=${index}>X</button></td>
 			`;
-			booksContainer.appendChild(bookRow);
+			booksTableRows.appendChild(bookRow);
 		});
 	}
 }
@@ -47,16 +53,17 @@ function deleteBook(index) {
 	library.splice(index, 1);
 	displayBooks();
 }
-const showFormButton = document.getElementById('show-form');
-const addBookForm = document.getElementById('add-book');
+
+const showFormButton = document.getElementById('show-form-button');
+const addBookForm = document.getElementById('add-book-form');
 function eventListeners() {
 	showFormButton.addEventListener('click', () => {
 		addBookForm.classList.remove('hidden');
 		showFormButton.classList.add('hidden');
 	});
 
-	addBookForm.addEventListener('submit', (book) => {
-		book.preventDefault();
+	addBookForm.addEventListener('submit', (event) => {
+		event.preventDefault();
 
 		const title = document.getElementById('title').value;
 		const author = document.getElementById('author').value;
@@ -66,12 +73,12 @@ function eventListeners() {
 		const newBook = new Book(title, author, pages, status);
 		addBookToLibrary(newBook);
 		displayBooks();
-		document.getElementById('add-book').reset();
+		document.getElementById('add-book-form').reset();
 	});
 
-	document.getElementById('list').addEventListener('click', (book) => {
-		const bookId = book.target.getAttribute('data-id');
-		const bookStatusId = book.target.getAttribute('data-status');
+	document.addEventListener('click', (event) => {
+		const bookId = event.target.getAttribute('data-book-id');
+		const bookStatusId = event.target.getAttribute('data-book-status');
 		if (bookId !== null) {
 			deleteBook(bookId);
 		}
