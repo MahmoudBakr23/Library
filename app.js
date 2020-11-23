@@ -56,6 +56,7 @@ function deleteBook(index) {
 
 const showFormButton = document.getElementById('show-form-button');
 const addBookForm = document.getElementById('add-book-form');
+
 function eventListeners() {
 	showFormButton.addEventListener('click', () => {
 		addBookForm.classList.remove('hidden');
@@ -79,6 +80,7 @@ function eventListeners() {
 	document.addEventListener('click', (event) => {
 		const bookId = event.target.getAttribute('data-book-id');
 		const bookStatusId = event.target.getAttribute('data-book-status');
+
 		if (bookId !== null) {
 			deleteBook(bookId);
 		}
