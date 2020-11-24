@@ -1,5 +1,9 @@
 const library = [];
 
+const booksTableRows = document.getElementById('books-table-rows');
+const formButton = document.getElementById('form-button');
+const bookForm = document.getElementById('book-form');
+
 function Book(title, author, pages, status) {
 	this.title = title;
 	this.author = author;
@@ -13,7 +17,6 @@ function addBookToLibrary(book) {
 
 function displayBooks() {
 	const booksList = library;
-	const booksTableRows = document.getElementById('books-table-rows');
 	booksTableRows.innerHTML = '';
 
 	if (booksList !== null) {
@@ -33,7 +36,11 @@ function displayBooks() {
 }
 
 function changeBookStatus(index) {
-	library[index].status = !library[index].status;
+	if (library[index].status === 'Read Already') {
+		library[index].status = 'Not Yet Read';
+	} else {
+		library[index].status = 'Read Already';
+	}
 	displayBooks();
 }
 
@@ -42,8 +49,6 @@ function deleteBook(index) {
 	displayBooks();
 }
 
-const formButton = document.getElementById('form-button');
-const bookForm = document.getElementById('book-form');
 
 function eventListeners() {
 	formButton.addEventListener('click', () => {
