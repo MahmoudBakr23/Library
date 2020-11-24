@@ -37,14 +37,14 @@ function displayBooks() {
 				<td>${book.author}</td>
 				<td>${book.pages}</td>
 				<td><button data-book-status=${index}>${book.status}</button</td>
-				<td><button class="delete" data-book-id=${index}>X</button></td>
+				<td><button class="delete" data-book-id=${index}>Delete Book</button></td>
 			`;
 			booksTableRows.appendChild(bookRow);
 		});
 	}
 }
 
-function bookStatus(index) {
+function changeBookStatus(index) {
 	library[index].status = !library[index].status;
 	displayBooks();
 }
@@ -54,16 +54,16 @@ function deleteBook(index) {
 	displayBooks();
 }
 
-const showFormButton = document.getElementById('show-form-button');
-const addBookForm = document.getElementById('add-book-form');
+const formButton = document.getElementById('form-button');
+const bookForm = document.getElementById('book-form');
 
 function eventListeners() {
-	showFormButton.addEventListener('click', () => {
-		addBookForm.classList.remove('hidden');
-		showFormButton.classList.add('hidden');
+	formButton.addEventListener('click', () => {
+		bookForm.classList.remove('hidden');
+		formButton.classList.add('hidden');
 	});
 
-	addBookForm.addEventListener('submit', (event) => {
+	bookForm.addEventListener('submit', (event) => {
 		event.preventDefault();
 
 		const title = document.getElementById('title').value;
@@ -74,7 +74,7 @@ function eventListeners() {
 		const newBook = new Book(title, author, pages, status);
 		addBookToLibrary(newBook);
 		displayBooks();
-		document.getElementById('add-book-form').reset();
+		bookForm.reset();
 	});
 
 	document.addEventListener('click', (event) => {
@@ -85,7 +85,7 @@ function eventListeners() {
 			deleteBook(bookId);
 		}
 		if (bookStatusId !== null) {
-			bookStatus(bookStatusId);
+			changeBookStatus(bookStatusId);
 		}
 	});
 }
