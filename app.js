@@ -1,4 +1,4 @@
-const myLibrary = (function() {
+const myLibrary = (function () {
 	const library = [];
 
 	const booksTableRows = document.getElementById('books-table-rows');
@@ -17,9 +17,7 @@ const myLibrary = (function() {
 		formButton.classList.add('hidden');
 	}
 
-	formButton.addEventListener('click', showForm);
-
-	function _addBookToLibrary(book) {
+	function addBookToLibrary(book) {
 		library.push(book);
 	}
 
@@ -57,6 +55,7 @@ const myLibrary = (function() {
 		displayBooks();
 	}
 
+	formButton.addEventListener('click', showForm);
 	bookForm.addEventListener('submit', (event) => {
 		event.preventDefault();
 
@@ -66,7 +65,7 @@ const myLibrary = (function() {
 		const status = document.querySelector('input[name=readBook]:checked').value;
 
 		const newBook = new Book(title, author, pages, status);
-		_addBookToLibrary(newBook);
+		addBookToLibrary(newBook);
 		displayBooks();
 		bookForm.reset();
 	});
@@ -83,6 +82,11 @@ const myLibrary = (function() {
 		}
 	});
 
-	return { changeBookStatus, deleteBook }
+	function addNewBook(title, author, pages, status) {
+		const newBook = new Book(title, author, pages, status);
+		addBookToLibrary(newBook);
+		displayBooks();
+	}
 
-})();
+	return { addNewBook, changeBookStatus, deleteBook };
+}());
