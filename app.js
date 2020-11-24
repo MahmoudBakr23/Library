@@ -49,13 +49,15 @@ function deleteBook(index) {
 	displayBooks();
 }
 
-
-function eventListeners() {
+function showForm() {
 	formButton.addEventListener('click', () => {
 		bookForm.classList.remove('hidden');
 		formButton.classList.add('hidden');
 	});
+}
 
+
+function addNewBook() {
 	bookForm.addEventListener('submit', (event) => {
 		event.preventDefault();
 
@@ -69,7 +71,10 @@ function eventListeners() {
 		displayBooks();
 		bookForm.reset();
 	});
+}
 
+
+function manipulateBooks() {
 	document.addEventListener('click', (event) => {
 		const bookId = event.target.getAttribute('data-book-id');
 		const bookStatusId = event.target.getAttribute('data-book-status');
@@ -84,4 +89,6 @@ function eventListeners() {
 }
 
 displayBooks();
-eventListeners();
+showForm();
+addNewBook();
+manipulateBooks();
