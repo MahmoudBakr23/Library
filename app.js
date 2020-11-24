@@ -27,7 +27,7 @@ function displayBooks() {
 				<td>${book.title}</td>
 				<td>${book.author}</td>
 				<td>${book.pages}</td>
-				<td><button data-book-status=${index}>${book.status}</button</td>
+				<td><span class="status">${book.status}</span><button class="status-change-button" data-book-status=${index}>Change</button</td>
 				<td><button class="delete" data-book-id=${index}>Delete Book</button></td>
 			`;
 			booksTableRows.appendChild(bookRow);
