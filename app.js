@@ -1,3 +1,5 @@
+const library = [];
+
 function Book(title, author, pages, status) {
 	this.title = title;
 	this.author = author;
@@ -5,29 +7,15 @@ function Book(title, author, pages, status) {
 	this.status = status;
 }
 
-const library = [];
-
 function addBookToLibrary(book) {
 	library.push(book);
 }
 
 function displayBooks() {
 	const booksList = library;
-	const booksTable = document.getElementById('books-table');
-	booksTable.innerHTML = `
-													<thead>
-														<td style="color: #fff; background-color: #333;">Book ID</td>
-														<td style="color: #fff; background-color: #333;">Title</td>
-														<td style="color: #fff; background-color: #333;">Author</td>
-														<td style="color: #fff; background-color: #333;">No.Pages</td>
-														<td style="color: #fff; background-color: #333;">Read?</td>
-														<td style="color: #fff; background-color: #333;">Delete</td>
-													</thead>
-													<tbody id="books-table-rows">
-													</tbody>
-													`;
-
 	const booksTableRows = document.getElementById('books-table-rows');
+	booksTableRows.innerHTML = '';
+
 	if (booksList !== null) {
 		booksList.forEach((book, index) => {
 			const bookRow = document.createElement('tr');

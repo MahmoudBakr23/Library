@@ -47,6 +47,11 @@ main {
   background-color: #999;
 }
 
+thead {
+  color: #fff;
+  background-color: #333;
+}
+
 td {
   padding: 1rem 2rem;
 }
