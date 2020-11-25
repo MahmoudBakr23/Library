@@ -5,11 +5,21 @@ const myLibrary = (function () {
 	const formButton = document.getElementById('form-button');
 	const bookForm = document.getElementById('book-form');
 
-	function Book(title, author, pages, status) {
-		this.title = title;
-		this.author = author;
-		this.pages = pages;
-		this.status = status;
+	class Book {
+		constructor(title, author, pages, status) {
+			this.title = title;
+			this.author = author;
+			this.pages = pages;
+			this.status = status;
+		}
+
+		changeStatus() {
+			if (this.status === 'Read Already') {
+				this.status = 'Not Yet Read';
+			} else {
+				this.status = 'Read Already';
+			}
+		}
 	}
 
 	function showForm() {
@@ -42,11 +52,7 @@ const myLibrary = (function () {
 	}
 
 	function changeBookStatus(index) {
-		if (library[index].status === 'Read Already') {
-			library[index].status = 'Not Yet Read';
-		} else {
-			library[index].status = 'Read Already';
-		}
+		library[index].changeStatus();
 		displayBooks();
 	}
 
