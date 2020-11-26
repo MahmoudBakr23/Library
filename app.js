@@ -1,9 +1,6 @@
-function Book(title, author, pages, status) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.status = status;
-}
+const bookRefactor = (title, author, pages, status) => ({
+	title, author, pages, status,
+});
 
 const library = [];
 
@@ -63,7 +60,7 @@ function eventListeners() {
 		const pages = document.getElementById('pages').value;
 		const status = document.querySelector('input[name=readBook]:checked').value;
 
-		const newBook = new Book(title, author, pages, status);
+		const newBook = bookRefactor(title, author, pages, status);
 		addBookToLibrary(newBook);
 		displayBooks();
 		document.getElementById('add-book').reset();
