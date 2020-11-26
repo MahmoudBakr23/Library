@@ -1,6 +1,6 @@
-const bookRefactor = (title, author, pages, status) => {
-	return {title, author, pages, status}
-}
+const bookRefactor = (title, author, pages, status) => ({
+	title, author, pages, status,
+});
 
 const library = [];
 
